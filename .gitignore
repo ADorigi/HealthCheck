@@ -1,0 +1,11 @@
+healthcheck
+
+.idea
+
+.vscode
+
+cache/*
+
+*.env
+
+*.pem

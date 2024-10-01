@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: healthcheck-internet
+  namespace: opengovernance
+  labels:
+    app: healthcheck
+spec:
+  containers:
+    - name: healthcheck-container
+      image: adorigi/healthcheck-linux
+      imagePullPolicy: Always
+      
