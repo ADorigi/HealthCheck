@@ -9,9 +9,7 @@ on:
 jobs:
   tag:
     runs-on: ubuntu-latest
-    permissions:
-        id-token: write
-        contents: read
+    permissions: write-all
     outputs:
       latest_tag: ${{ steps.set_latest_tag.outputs.latest_tag }}
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
