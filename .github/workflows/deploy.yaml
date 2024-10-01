@@ -133,5 +133,5 @@ jobs:
             push: true
             tags: |
                 ghcr.io/${{ env.OWNER_LC }}/health-check:${{ needs.tag.outputs.latest_tag }}-${{ github.event.inputs.deployTo == '' && 'dev' || github.event.inputs.deployTo }}
-            file: docker/HealthCheckDockerfile
+            file: ./Dockerfile
             context: .
