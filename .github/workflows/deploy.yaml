@@ -121,17 +121,17 @@ jobs:
             registry: ghcr.io
             username: ${{ github.actor }}
             password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set lower case owner name
+      - name: Set lower case repository name
         run: |
-            echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+            echo "REPOSITORY_LC=${OWNER,,}" >>${GITHUB_ENV}
         env:
-            OWNER: '${{ github.repository_owner }}'
+            OWNER: '${{ github.repository }}'
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v4
         with:
             push: true
             tags: |
-                ghcr.io/${{ env.OWNER_LC }}/health-check:${{ needs.tag.outputs.latest_tag }}-${{ github.event.inputs.deployTo == '' && 'dev' || github.event.inputs.deployTo }}
+                ghcr.io/${{ env.REPOSITORY_LC }}:${{ needs.tag.outputs.latest_tag }}-${{ github.event.inputs.deployTo == '' && 'dev' || github.event.inputs.deployTo }}
             file: ./Dockerfile
             context: .
