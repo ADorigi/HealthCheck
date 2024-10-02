@@ -4,4 +4,4 @@ RUN apk --no-cache add ca-certificates
 FROM scratch
 COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY ./build/healthcheck /
-CMD [ "/build/healthcheck" ]
+CMD [ "/healthcheck" ]
